@@ -1,0 +1,173 @@
+---
+title: "Introducción a git"
+format: revealjs
+self-contained: true
+---
+
+## GIT
+
+- Sistema de control de versiones
+- Descentralizado (cada usuario tiene una copia del repositorio)
+- Permite la colaboración eficiente
+
+## Partes
+
+![](imagenes/diagrama1.png)
+
+## Flujo de trabajo local 
+
+![](imagenes/diagrama2.png){.absolute top=70 left=0 height="600"}
+
+## Ejercicios {.smaller}
+
+::: {.panel-tabset}
+
+## Ejercicio
+
+
+
+1. Crear un nuevo repositorio 
+2. Crear un archivo de texto, añadir el archivo a git.
+3. Hacer una modificación al archivo
+4. Hacer un commit que guarde los cambios 
+
+## Respuestas 
+```{.r}
+# Ejercicio 1
+git init
+```
+
+
+```{.r}
+# Ejercicio 2
+git add .
+git commit -m 'Creación del primer archivo'
+```
+
+
+```{.r}
+# Ejercicio 3
+git status
+git add .
+git status
+git commit -m 'Cambio 1'
+git log
+```
+
+:::
+
+## Flujo de trabajo local 
+
+![](imagenes/diagrama2.png){.absolute top=70 left=0 height="600"}
+![](imagenes/diagrama3.png){.absolute top=70 right=-200 height="600"}
+
+## Ejercicios {.smaller}
+
+::: {.panel-tabset}
+
+## Ejercicio
+
+1. Revisar ramas existentes. Crear una rama nueva 
+2. Moverse a la rama creada. Crear un nuevo archivo de texto, agregarlo a git y hacer commit.
+3. Moverse a la rama master ¿Cuántos archivos tiene?
+4. Unir ambas ramas.
+
+## Respuesta
+
+```{.r}
+# Ejercicio 1
+git branch
+git branch sofia
+```
+<br>
+```{.r}
+# Ejercicio 2
+git checkout sofia 
+touch file2.txt
+git add . 
+git commit -m 'archivo 2'
+git checkout master
+ls
+```
+<br>
+```{.r}
+# Ejercicio 3
+git branch sofia
+git merge main
+```
+
+:::
+
+## Flujo de trabajo local-remoto
+
+![](imagenes/git_commands.jpeg){.absolute top=200 left=300 height="300"}
+
+## Ejercicios{.smaller}
+
+::: {.panel-tabset}
+
+## Ejercicio
+
+1. Agregar remoto, crear una rama principal que se llame main y subir los cambios al repositorio remoto
+
+```{.r}
+## Crear el repositorio en github
+git remote add origin https://github.com/sofiazorrilla/git_ejercicios.git
+git branch -M main
+git push -u origin main
+
+```
+
+2. Hacer un cambio en el repositorio local y actualizar el repositorio remoto 
+
+## Respuestas
+
+```{.r}
+# Ejercicio 2
+
+git pull
+touch file4.txt
+git add . 
+git commit -m 'creación de archivo 4'
+git push 
+
+```
+
+:::
+
+## Flujo de trabajo en las colaboraciones 
+
+![](imagenes/diagrama4.png)
+
+
+## Ejercicios {.smaller}
+
+::: {.panel-tabset}
+
+## Ejercicio
+
+1. Clonar repositorio en su computadora https://github.com/sofiazorrilla/git_ejercicios.git
+
+```{.r}
+git clone https://github.com/sofiazorrilla/git_ejercicios.git
+
+```
+
+2. Seguir el flujo de trabajo para que cada uno de ustedes cree un nuevo archivo y lo suba al repositorio. 
+
+3. Generar el pull request para poder añadir el archivo a la rama principal. Asignar al menos un revisor. 
+
+4. Terminar el pull request.
+
+## Respustas
+
+```{.r}
+git branch sofia 
+git checkout sofia 
+touch file_sofia.txt
+git add . 
+git commit -m 'creando archivo sofia'
+git push origin sofia
+```
+
+:::
